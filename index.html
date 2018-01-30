@@ -1,3 +1,94 @@
-<p>You've created a new website!</p>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Учёт моделей</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
 
-<p>/ Winginx /</p>
+<body onload="setInterval('scroll();', 250);">
+<div id="top">
+
+</div>
+
+
+<div id="container">
+    <a href="foto/001.jpg"><img id="preview1" src="foto/001.jpg" /></a>
+    <a href="foto/002.jpg"><img id="preview" src="foto/002.jpg" /></a>
+    <a href="foto/003.jpg"><img id="preview" src="foto/003.jpg" /></a>
+    <a href="foto/004.jpg"><img id="preview" src="foto/004.jpg" /></a>
+    <a href="foto/005.jpg"><img id="preview1" src="foto/005.jpg" /></a>
+    <a href="foto/006.jpg"><img id="preview" src="foto/006.jpg" /></a>
+    <a href="foto/007.jpg"><img id="preview" src="foto/007.jpg" /></a>
+    <a href="foto/008.jpg"><img id="preview" src="foto/008.jpg" /></a>
+    <a href="foto/009.jpg"><img id="preview1" src="foto/009.jpg" /></a>
+    <a href="foto/010.jpg"><img id="preview" src="foto/010.jpg" /></a>
+    <a href="foto/011.jpg"><img id="preview" src="foto/011.jpg" /></a>
+    <a href="foto/012.jpg"><img id="preview" src="foto/012.jpg" /></a>
+
+    <!-- <hr /> -->
+</div>
+</body>
+</html>
+<script>
+var contentHeight = 640;
+var pageHeight = document.documentElement.clientHeight-225;
+var scrollPosition;
+var n = 10;
+var xmlhttp;
+
+function putImages(){
+	
+	if (xmlhttp.readyState==4) 
+	  {
+		  if(xmlhttp.responseText){
+			 var resp = xmlhttp.responseText.replace("\r\n", ""); 
+			 var files = resp.split(";");
+			  var j = 0;
+			  for(i=0; i<files.length; i++){
+				  if(files[i] != ""){
+					 document.getElementById("container").innerHTML += '<a href="foto/'+files[i]+'"><img id="preview" src="foto/'+files[i]+'" /></a>';
+					 j++;
+					   if(j ==8){
+						  // document.getElementById("container").innerHTML += '<p>'+(n-1)+" Images Displayed | <a href='#header'>top</a></p><br /><hr />";
+						  j = 0;
+					  }
+				  }
+			  }
+		  }
+	  }
+}
+		
+		
+function scroll(){
+	
+	if(navigator.appName == "Microsoft Internet Explorer")
+		scrollPosition = document.documentElement.scrollTop;
+	else
+		scrollPosition = window.pageYOffset;		
+
+
+	
+	if((contentHeight - pageHeight - scrollPosition) < 120){
+	console.log( contentHeight - pageHeight - scrollPosition);			
+		if(window.XMLHttpRequest)
+			xmlhttp = new XMLHttpRequest();
+		else
+			if(window.ActiveXObject)
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			else
+				alert ("Извините! Ваш браузер не поддерживает XMLHTTP!");		  
+		  
+		var url="getImages.php?n="+n;
+		
+		xmlhttp.open("GET",url,true);
+		xmlhttp.send();
+		
+		n += 9;
+		xmlhttp.onreadystatechange=putImages;		
+		contentHeight += 640;		
+	}
+}
+
+</script>
+
