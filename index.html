@@ -4,6 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Учёт моделей</title>
 <link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script src="js/functions.js" type="text/javascript" charset="utf-8" async defer></script>
+<!-- <script src="js/popup_img.js" type="text/javascript" charset="utf-8" async defer></script> -->
 </head>
 
 <body onload="setInterval('scroll();', 250);">
@@ -13,24 +16,48 @@
 
 
 <div id="container">
-    <a href="foto/001.jpg"><img id="preview1" src="foto/001.jpg" /></a>
-    <a href="foto/002.jpg"><img id="preview" src="foto/002.jpg" /></a>
-    <a href="foto/003.jpg"><img id="preview" src="foto/003.jpg" /></a>
-    <a href="foto/004.jpg"><img id="preview" src="foto/004.jpg" /></a>
-    <a href="foto/005.jpg"><img id="preview1" src="foto/005.jpg" /></a>
-    <a href="foto/006.jpg"><img id="preview" src="foto/006.jpg" /></a>
-    <a href="foto/007.jpg"><img id="preview" src="foto/007.jpg" /></a>
-    <a href="foto/008.jpg"><img id="preview" src="foto/008.jpg" /></a>
-    <a href="foto/009.jpg"><img id="preview1" src="foto/009.jpg" /></a>
-    <a href="foto/010.jpg"><img id="preview" src="foto/010.jpg" /></a>
-    <a href="foto/011.jpg"><img id="preview" src="foto/011.jpg" /></a>
-    <a href="foto/012.jpg"><img id="preview" src="foto/012.jpg" /></a>
+    <img class="preview"  src="foto/001.jpg"   onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/002.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/003.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/004.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/005.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/006.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/007.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/008.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/009.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/010.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/011.jpg"  onCLick="popupImg(this)" />
+    <img class="preview"  src="foto/012.jpg"  onCLick="popupImg(this)" />
 
     <!-- <hr /> -->
 </div>
 </body>
 </html>
+
+
+
 <script>
+	function popupImg(immm){	// Событие клика на маленькое изображение
+		console.log(immm);
+	  	var img = $(this);	// Получаем изображение, на которое кликнули
+		var src = immm.src; // Достаем из этого изображения путь до картинки
+		$("body").append("<div class='popup'>"+ //Добавляем в тело документа разметку всплывающего окна
+						 "<div class='popup_bg'></div>"+ // Блок, который будет служить фоном затемненным
+						 "<img src="+src+" class='popup_img' />"+ // Само увеличенное фото
+						 "</div>"); 
+		$(".popup").fadeIn(400); // Медленно выводим изображение
+		$(".popup_bg").click(function(){	// Событие клика на затемненный фон	   
+			$(".popup").fadeOut(400);	// Медленно убираем всплывающее окно
+			setTimeout(function() {	// Выставляем таймер
+			  $(".popup").remove(); // Удаляем разметку высплывающего окна
+			}, 400);
+		});
+	}
+
+</script>
+
+<!-- <script>
+	
 var contentHeight = 640;
 var pageHeight = document.documentElement.clientHeight-225;
 var scrollPosition;
