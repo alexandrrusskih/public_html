@@ -1,21 +1,14 @@
 
 <?php
-
-	$dir = "foto";
-	if(is_dir($dir)){
-		if($dd = opendir($dir)){
-			while (($f = readdir($dd)) !== false)
-				if($f != "." && $f != "..")
-					$files[] = $f;
-			closedir($dd);
-		} 
-	
-
-	$n = $_GET["n"];
-	$response = "";
-		for($i = $n; $i<$n+9; $i++){
-			$response = $response.$files[$i%count($files)].';';
-		}
-		echo $response;
-	}
+require_once 'database.php';
+connect();
+$n = $_GET["n"];
+$qr_result = "select * from main_sup ORDER BY date DESC LIMIT " . strval($n) . "," . strval($n + 8);
+$query = mysql_query($qr_result) or die("<p>Невозможно выполнить запрос: " . mysql_error() . ". Ошибка произошла в строке " . __LINE__ . "</p>");
+$response = "";
+while ($data = mysql_fetch_array($query)) {
+    $imga = $data[image];
+    $response = $response . '"' . $imga . '";';
+}
+echo $response;
 ?>

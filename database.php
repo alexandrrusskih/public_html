@@ -10,7 +10,7 @@ function connect() {
 	$db_host = 'localhost';		// fam.mysql
 	$db_user = 'root';	// fam_dbuser
 	$db_pass = '';	// U03z5Tz6bu3L
-	$db_name = 'items';			// Имя базы данных
+	$db_name = 'support';			// Имя базы данных
 	
 	// Подключаемся к серверу
 	$conn = mysql_connect($db_host, $db_user, $db_pass) or die("<p>Невозможно подключиться к СУБД: " . mysql_error() . ". Ошибка произошла в строке " . __LINE__ . "</p>");
