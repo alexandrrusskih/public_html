@@ -21,10 +21,12 @@ connect();
 		</div>
 		<div id="container">
 			<?php
-			$qr_result = "select * from main_sup ORDER BY date DESC LIMIT 1, 12";
+			$qr_result = "select * from main_sup ORDER BY date DESC LIMIT 0, 11";
 			$query = mysql_query($qr_result) or die("<p>Невозможно выполнить запрос: " . mysql_error() . ". Ошибка произошла в строке " . __LINE__ . "</p>");
 			while ($data = mysql_fetch_array($query)) {
 			    $imga = $data[image];
+			   $rest = substr($imga, 5);
+			   $imga="thumb/".$rest;
 			    echo '<img class="preview"  src="' . $imga . '" onCLick="popupImg(this)" />';}
 			?>
 		</div>
@@ -32,7 +34,7 @@ connect();
 </html>
 
 
-
+<!-- 
 	<script>
 		function popupImg(immm){	// Событие клика на маленькое изображение
 		  	var img = $(this);	// Получаем изображение, на которое кликнули
@@ -49,7 +51,7 @@ connect();
 				}, 400);
 			});
 		}
-	</script>
+	</script> -->
 
 <!-- <script>
 

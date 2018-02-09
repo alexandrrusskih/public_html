@@ -1,7 +1,7 @@
 var contentHeight = 640;
 var pageHeight = document.documentElement.clientHeight - 225;
 var scrollPosition;
-var n = 9;
+var n = 8;
 var xmlhttp;
 
 function putImages() {
@@ -35,8 +35,26 @@ function scroll() {
         var url = "getImages.php?n=" + n;
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
-        n += 9;
+        n += 8;
         xmlhttp.onreadystatechange = putImages;
         contentHeight += 640;
     }
+}
+
+function popupImg(immm) { // Событие клика на маленькое изображение
+    var img = $(this); // Получаем изображение, на которое кликнули
+    var src = immm.src; // Достаем из этого изображения путь до картинки
+    var rest = src.substring(21);
+    src = "foto/" + rest;
+    $("body").append("<div class='popup'>" + //Добавляем в тело документа разметку всплывающего окна
+        "<div class='popup_bg'></div>" + // Блок, который будет служить фоном затемненным
+        "<img src=" + src + " class='popup_img' />" + // Само увеличенное фото
+        "</div>");
+    $(".popup").fadeIn(400); // Медленно выводим изображение
+    $(".popup_img").click(function() { // Событие клика на затемненный фон
+        $(".popup").fadeOut(400); // Медленно убираем всплывающее окно
+        setTimeout(function() { // Выставляем таймер
+            $(".popup").remove(); // Удаляем разметку высплывающего окна
+        }, 400);
+    });
 }
