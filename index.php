@@ -11,8 +11,10 @@ connect();
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Учёт моделей</title>
 		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css">
 		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/functions.js" type="text/javascript" charset="utf-8" async defer></script>
+		<script src="js/jquery.fancybox.min.js"></script>
 		<!-- <script src="js/popup_img.js" type="text/javascript" charset="utf-8" async defer></script> -->
 	</head>
 
