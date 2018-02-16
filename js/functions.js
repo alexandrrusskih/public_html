@@ -60,6 +60,18 @@ function popupImg1(immm) { // Событие клика на маленькое 
     });
 }
 
+
+
+function clickImage(im_src){
+    var img = $(this); // Получаем изображение, на которое кликнули
+    var src = immm.src; // Достаем из этого изображения путь до картинки
+
+    var rest = src.substring(21);
+
+
+}
+
+
 function popupImg(immm) { // Событие клика на маленькое изображение
     var img = $(this); // Получаем изображение, на которое кликнули
     var src = immm.src; // Достаем из этого изображения путь до картинки
@@ -70,19 +82,22 @@ function popupImg(immm) { // Событие клика на маленькое �
     {
       src  : src,
       opts : {
-        caption : 'First caption',
+        animationEffect : 'zoom',
         thumb   : src
       }
     },
     {
       src  : src,
       opts : {
-        caption : 'Second caption',
         thumb   :src
       }
     }
   ], {
     loop : false,
+    animationEffect : "zoom",
+    animationDuration : 500,
+    transitionEffect : "slide",
+    toolbar : false
   });
 
 }
