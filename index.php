@@ -29,7 +29,7 @@ connect();
 			    $imga = $data[image];
 			   $rest = substr($imga, 5);
 			   $imga="thumb/".$rest;
-			    echo '<img class="preview"  src="' . $imga . '" onCLick="popupImg(this)" />';}
+			    echo '<img class="preview"  src="' . $imga . '" onCLick="clickImage(this)" />';}
 			?>
 		</div>
 	</body>

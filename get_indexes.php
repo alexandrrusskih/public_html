@@ -1,21 +1,22 @@
 
 <?php
 
-	$dir = "thumb";
-	if(is_dir($dir)){
-		if($dd = opendir($dir)){
-			while (($f = readdir($dd)) !== false)
-				if($f != "." && $f != "..")
-					$files[] = $f;
-			closedir($dd);
-		} 
-	
 
-	$n = $_GET["n"];
-	$response = "";
-		for($i = $n; $i<$n+9; $i++){
-			$response = $response.$files[$i%count($files)].';';
-		}
-		echo $response;
-	}
+ $dir = "foto/";
+ $src = $_GET["n"];
+ $response = $dir.$src.';';
+$i = 1;
+$r = str_ireplace(".jpg", "_" . $i . ".jpg", $src);
+if (file_exists($dir . $r)) {
+    while (file_exists($dir . $r)) {
+        $response = $response . $dir . $r . ';';
+        $i++;
+        $r = str_ireplace(".jpg", "_" . $i . ".jpg", $src);
+    }
+}
+//else $response=$src;
+echo $response;
 ?>
+
+
+
