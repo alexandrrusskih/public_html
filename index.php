@@ -7,33 +7,33 @@ connect();
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Учёт моделей</title>
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css">
-		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-		<script src="js/functions.js" type="text/javascript" charset="utf-8" async defer></script>
-		<script src="js/jquery.fancybox.min.js"></script>
-		<!-- <script src="js/popup_img.js" type="text/javascript" charset="utf-8" async defer></script> -->
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Учёт моделей</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css">
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/functions.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<!-- <script src="js/popup_img.js" type="text/javascript" charset="utf-8" async defer></script> -->
+</head>
 
-	<body onload="setInterval('scroll();', 250);">
-		<div id="top">
-		</div>
-		<div id="container">
-			<?php
-			$qr_result = "select * from main_sup ORDER BY date DESC LIMIT 0, 11";
-			$query = mysql_query($qr_result) or die("<p>Невозможно выполнить запрос: " . mysql_error() . ". Ошибка произошла в строке " . __LINE__ . "</p>");
-			while ($data = mysql_fetch_array($query)) {
-			    $imga = $data[image];
-			   $rest = substr($imga, 5);
-			   $imga="thumb/".$rest;
-			    echo '<img class="preview"  src="' . $imga . '" onCLick="clickImage(this)" />';}
+<body onload="setInterval('scroll();', 250);">
+	<div id="top">
+	</div>
+	<div id="container">
+		<?php
+		$sql = "SELECT * FROM `main_sup` ORDER BY date DESC LIMIT 0, 11";
+		$title = DB::run($sql);
+		while ($row = $title->fetch(PDO::FETCH_LAZY)){
+			$imga = $row['image'];
+			$rest = substr($imga, 5);
+			$imga="thumb/".$rest;
+			echo '<img class="preview"  src="' . $imga . '" onCLick="clickImage(this)" />';}
 			?>
 		</div>
 	</body>
-</html>
+	</html>
 
 
 <!-- 

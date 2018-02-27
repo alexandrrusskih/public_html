@@ -18,9 +18,7 @@ function showImages()
 					items.push({src : files[i], opts:{ thumb :files[i]}},);
 				}
 			}
-
 			items.pop();
-			console.log(items);
 			$.fancybox.open(items, 
 			{
 				loop : false,
