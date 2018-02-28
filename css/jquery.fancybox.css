@@ -353,10 +353,10 @@ body.fancybox-iosfix {
   background: rgba(30, 30, 30, 0.6); }
 
 .fancybox-navigation .fancybox-button--arrow_left {
-  left: 0; }
+  left: 20%; }
 
 .fancybox-navigation .fancybox-button--arrow_right {
-  right: 0; }
+  right:20%; }
 
 /* Close button on the top right corner of html content */
 .fancybox-close-small {

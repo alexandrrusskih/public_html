@@ -1,7 +1,5 @@
 
 <?php
-
-
  $dir = "foto/";
  $src = $_GET["n"];
  $response = $dir.$src.';';
@@ -14,7 +12,6 @@ if (file_exists($dir . $r)) {
         $r = str_ireplace(".jpg", "_" . $i . ".jpg", $src);
     }
 }
-//else $response=$src;
 echo $response;
 ?>
 
