@@ -283,22 +283,25 @@ body.fancybox-iosfix {
   padding: 10px;
   border: 0;
   border-radius: 0;
-  background: rgba(30, 30, 30, 0.6);
+  /*background: rgba(30, 30, 30, 0.6);*/
+  background: #ffffff;
   transition: color .3s ease;
   cursor: pointer;
   outline: none; }
 
+/*arrow_color*/
 .fancybox-button,
 .fancybox-button:visited,
 .fancybox-button:link {
-  color: #ccc; }
+  color: #808080; }
+
 
 .fancybox-button:focus,
 .fancybox-button:hover {
-  color: #fff; }
+  color: #000; }
 
 .fancybox-button[disabled] {
-  color: #ccc;
+  color: #aaa;
   cursor: default;
   opacity: 0.6; }
 
@@ -312,7 +315,7 @@ body.fancybox-iosfix {
   fill: currentColor;
   stroke: currentColor;
   stroke-linejoin: round;
-  stroke-width: 3; }
+  stroke-width: 4; }
 
 .fancybox-button--share svg path {
   stroke-width: 1; }
@@ -350,13 +353,13 @@ body.fancybox-iosfix {
   right: 10px;
   width: 40px;
   height: 40px;
-  background: rgba(30, 30, 30, 0.6); }
+  background: rgba(255, 255, 255, 1); }
 
 .fancybox-navigation .fancybox-button--arrow_left {
-  left: 20%; }
+  left:  calc(50% - 300px); }
 
 .fancybox-navigation .fancybox-button--arrow_right {
-  right:20%; }
+  right:calc(50% - 300px); }
 
 /* Close button on the top right corner of html content */
 .fancybox-close-small {
